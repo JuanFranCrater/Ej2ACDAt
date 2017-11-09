@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ficheros</string>
+    <string name="nombre">Nombre</string>
+    <string name="telefono">Teléfono</string>
+    <string name="email">Email</string>
+    <string name="Anadir">Añadir</string>
+    <string name="listar">Listar</string>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.ficheros.MenuActivity">
+
+    <Button
+        android:id="@+id/btnEj1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Agenda telefonica"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnEj2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Alarma intervalos"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnEj3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Dias Lectivos"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnEj4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="WebBrowser"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnEj5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Imagenes en Red"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnEj6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Conversor Moneda"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnEj7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Subida archivos"
+        android:textStyle="bold" />
+
+</LinearLayout>
