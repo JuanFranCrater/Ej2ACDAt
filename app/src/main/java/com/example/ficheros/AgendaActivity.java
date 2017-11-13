@@ -5,6 +5,8 @@ import android.os.Environment;
 import android.support.v4.app.INotificationSideChannel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,20 +15,29 @@ import android.widget.TextView;
 import com.example.ficheros.Adapter.ContactoAdapter;
 import com.example.ficheros.pojo.Contacto;
 
+import java.lang.reflect.Array;
 import java.net.CookieHandler;
 import java.util.ArrayList;
 
 public class AgendaActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnAnadir;
     Button btnListar;
-    ListView lista;
+    RecyclerView lista;
     Resultado listado;
     Memoria miMemoria;
+    private ContactoAdapter adapter;
+     ArrayList<Contacto> contactos = new ArrayList<Contacto>();
     public final static String NOMBREFICHERO = "agenda.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
+        lista=findViewById(R.id.lstVAgenda);
+        lista.setHasFixedSize(true);
+        lista.setLayoutManager(new GridLayoutManager(this,1));
+        adapter= new ContactoAdapter(contactos) ;
+        lista.setAdapter(adapter);
+
         miMemoria = new Memoria(getApplicationContext());
         btnAnadir=(Button)findViewById(R.id.btnAnadir);
         btnListar=(Button)findViewById(R.id.btnListar);
@@ -36,29 +47,29 @@ public class AgendaActivity extends AppCompatActivity implements View.OnClickLis
     }
     void Listar()
         {
-            final ArrayList<Contacto> contactos = new ArrayList<Contacto>();
-            listado = miMemoria.leerExterna(NOMBREFICHERO,"UTF-8");
+            String listaContactos;
+            String nombre;
+            String email;
+            String telefono;
+            ArrayList<String> valores = new ArrayList<String>();
+
             if(miMemoria.disponibleLectura())
             {
-            for(int i = 0; i<listado.getMensajeArray().size();i++)
+                listado = miMemoria.leerExterna(NOMBREFICHERO,"UTF-8");
+                listaContactos= listado.getMensaje();
+                for(int i = 0; i<listaContactos.length();i++)
+                {
+
+                }
+                valores.add();
+
+            for(int i = 0; i<valores.size();i++)
             {
-               contactos.add(new Contacto( listado.getMensajeArray().get(i),"",""));
-            }
-        lista = (ListView) findViewById(R.id.lstVAgenda);
-        lista.setAdapter(new ContactoAdapter(this, R.layout.item_contacto, contactos) {
-
-            @Override
-            public void onEntrada(Contacto contacto, View view) {
-                TextView textoNombre = (TextView) view.findViewById(R.id.txtNameValue);
-                textoNombre.setText(contacto.getNombre());
-                TextView textoTelefono = (TextView) view.findViewById(R.id.txtTelefonoValue);
-                textoTelefono.setText(contacto.getTelefono());
-                TextView textoMail = (TextView) view.findViewById(R.id.txtEmailValue);
-                textoMail.setText(contacto.getEmail());
+               adapter.getContactos().add(new Contacto(nombre ,telefono,email));
+               lista.setAdapter(adapter);
             }
 
-        });
-    }}
+}}
 
     @Override
     public void onClick(View view) {

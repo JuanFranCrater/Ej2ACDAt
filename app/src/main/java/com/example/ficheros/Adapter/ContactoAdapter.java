@@ -1,11 +1,14 @@
 package com.example.ficheros.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
+import com.example.ficheros.R;
 import com.example.ficheros.pojo.Contacto;
 
 import java.util.ArrayList;
@@ -14,45 +17,73 @@ import java.util.ArrayList;
  * Created by PcCom on 09/11/2017.
  */
 
-public abstract class ContactoAdapter extends BaseAdapter {
+public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.SectorViewHolder>{
     private ArrayList<Contacto> contactos;
+    public ArrayList<Contacto> getContactos()
+    {
+        return contactos;
+    }
     private int R_layout_IdView;
-    private Context contexto;
 
-    public ContactoAdapter(Context contexto, int R_layout_IdView, ArrayList<Contacto> contactos) {
-        this.contexto = contexto;
+    public ContactoAdapter() {
         this.contactos = contactos;
-        this.R_layout_IdView = R_layout_IdView;
+    }
+    public ContactoAdapter(ArrayList<Contacto> contactos)
+    {
+        this.contactos=contactos;
+    }
+    @Override
+
+
+    public SectorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //2.Inflar la vista Crea en memoria el objeto View con todos los Widget del xml: item_dependency.xml
+        View viewHolder = inflater.inflate(R.layout.item_contacto, null);
+        //null porque ya hemos establecio el viewGroup para nuestro item_dependency
+        //3. Se crea el objetos SectorViewHolder a partir de la vista
+        SectorViewHolder _sectorViewHolder = new SectorViewHolder(viewHolder);
+        return _sectorViewHolder;
+    }
+    @Override
+    public void onBindViewHolder(SectorViewHolder holder, int position) {
+        holder.txvName.setText(contactos.get(position).getNombre());
+        holder.txtEmail.setText(contactos.get(position).getEmail());
+        holder.txtTelefono.setText(contactos.get(position).getTelefono());
     }
 
+    /**
+     * Se crearan tantos elementos SectorViewHolder como elementos haya en el ArrayList definido dentro de la clase
+     * @return
+     */
     @Override
-    public View getView(int posicion, View view, ViewGroup pariente) {
-        if (view == null) {
-            LayoutInflater vi = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = vi.inflate(R_layout_IdView, null);
-        }
-        onEntrada (contactos.get(posicion), view);
-        return view;
-    }
-
-    @Override
-    public int getCount() {
+    public int getItemCount() {
         return contactos.size();
     }
 
-    @Override
-    public Object getItem(int posicion) {
-        return contactos.get(posicion);
-    }
 
-    @Override
-    public long getItemId(int posicion) {
-        return posicion;
-    }
 
-    /** Devuelve cada una de las entradas con cada una de las vistas a la que debe de ser asociada
-     * @param contacto La entrada que será la asociada a la view. La entrada es del tipo del paquete/handler
-     * @param view View particular que contendrá los datos del paquete/handler
+    public static class SectorViewHolder extends RecyclerView.ViewHolder{
+        private TextView txvName;
+        private TextView txtEmail;
+        private TextView txtTelefono;
+
+        public SectorViewHolder(View view)
+
+        {super(view);
+
+            txtEmail= view.findViewById(R.id.txtEmailValue);
+
+            txvName= view.findViewById(R.id.txtNameValue);
+
+            txtTelefono= view.findViewById(R.id.txtTelefono);
+        }
+    }
+    /**
+     * Devuelve el arrray de los sectores que el ususario ha modificado cuando la actividad estaba visible(estado dinamico) y que no
+     * se ha guardaddo en la base de datos(persistente)
+     *
+     * @return Arraylist de sectores modificados
      */
-    public abstract void onEntrada (Contacto contacto, View view);
+
+
 }

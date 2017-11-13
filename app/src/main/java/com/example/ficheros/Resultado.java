@@ -8,28 +8,11 @@ import java.util.ArrayList;
 
 public class Resultado {
     private boolean codigo; //true es correcto y false indica error
-
     private String mensaje;
-    private ArrayList<String> mensajeArray;
-
-    Resultado()
-    {
-        mensajeArray=new ArrayList<String>() ;
-    }
-    public ArrayList<String> getMensajeArray() {
-        return mensajeArray;
-    }
-
-    public void setMensajeArray(String mensajeArray,int pos) {
-        this.mensajeArray.add(mensajeArray);
-    }
-
     private String contenido;
-
     public boolean getCodigo() {
         return codigo;
     }
-
     public void setCodigo(boolean codigo) {
         this.codigo = codigo;
     }

@@ -132,10 +132,6 @@ public class Memoria {
             in = new BufferedReader(isw);
             while ((n = in.read()) != -1) {
                 miCadena.append((char) n);
-                resultado.setMensajeArray(miCadena.toString(),i);
-                if((char)n=='\n'){
-                    i++;
-                }
             }
         } catch (IOException e) {
             Log.e("Error", e.getMessage());
@@ -146,6 +142,7 @@ public class Memoria {
                 if (in != null) {
                     in.close();
                     resultado.setContenido(miCadena.toString());
+                    resultado.setMensaje(miCadena.toString());
                 }
             } catch (IOException e) {
                 Log.e("Error al cerrar", e.getMessage());

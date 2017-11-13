@@ -33,7 +33,8 @@ public class AnadirActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         if(view==btnAnadirContacto){
-        String contacto=edtName.getText().toString()+";"+edtPhone.getText().toString()+";"+edtMail.getText().toString();
+        String contacto=edtName.getText().toString()+","+edtPhone.getText().toString()+","+edtMail.getText().toString();
+        contacto.concat("\n");
         if(miMemoria.disponibleEscritura()) {
             if (miMemoria.escribirExterna(NOMBREFICHERO, contacto, true, "UTF-8")) {
             startActivity(new Intent(AnadirActivity.this,AgendaActivity.class));
