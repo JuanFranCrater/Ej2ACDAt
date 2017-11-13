@@ -27,7 +27,7 @@ public class AgendaActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
-
+        miMemoria = new Memoria(getApplicationContext());
         btnAnadir=(Button)findViewById(R.id.btnAnadir);
         btnListar=(Button)findViewById(R.id.btnListar);
         btnAnadir.setOnClickListener(this);
@@ -38,12 +38,12 @@ public class AgendaActivity extends AppCompatActivity implements View.OnClickLis
         {
             final ArrayList<Contacto> contactos = new ArrayList<Contacto>();
             listado = miMemoria.leerExterna(NOMBREFICHERO,"UTF-8");
-            for(int i = 0; i<listado.getMensajeArray().length;i++)
+            if(miMemoria.disponibleLectura())
             {
-               contactos.add(new Contacto( listado.getMensajeArray()[i],"",""));
+            for(int i = 0; i<listado.getMensajeArray().size();i++)
+            {
+               contactos.add(new Contacto( listado.getMensajeArray().get(i),"",""));
             }
-
-
         lista = (ListView) findViewById(R.id.lstVAgenda);
         lista.setAdapter(new ContactoAdapter(this, R.layout.item_contacto, contactos) {
 
@@ -58,7 +58,7 @@ public class AgendaActivity extends AppCompatActivity implements View.OnClickLis
             }
 
         });
-    }
+    }}
 
     @Override
     public void onClick(View view) {

@@ -1,5 +1,7 @@
 package com.example.ficheros;
 
+import java.util.ArrayList;
+
 /**
  * Created by PcCom on 09/11/2017.
  */
@@ -8,14 +10,18 @@ public class Resultado {
     private boolean codigo; //true es correcto y false indica error
 
     private String mensaje;
-    private String[] mensajeArray;
+    private ArrayList<String> mensajeArray;
 
-    public String[] getMensajeArray() {
+    Resultado()
+    {
+        mensajeArray=new ArrayList<String>() ;
+    }
+    public ArrayList<String> getMensajeArray() {
         return mensajeArray;
     }
 
     public void setMensajeArray(String mensajeArray,int pos) {
-        this.mensajeArray[pos] = mensajeArray;
+        this.mensajeArray.add(mensajeArray);
     }
 
     private String contenido;
