@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ficheros">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,14 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AgendaActivity" />
         <activity android:name=".AlarmaActivity" />
         <activity android:name=".LectivosActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name=".ImagenesActivity" />
         <activity android:name=".ConversorActivity" />
         <activity android:name=".UploadsActivity" />
-        <activity android:name=".AnadirActivity"></activity>
+        <activity android:name=".AgendaActivity"></activity>
     </application>
 
 </manifest>

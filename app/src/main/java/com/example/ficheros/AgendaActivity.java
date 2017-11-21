@@ -1,87 +1,88 @@
 package com.example.ficheros;
 
-import android.content.Intent;
-import android.os.Environment;
-import android.support.v4.app.INotificationSideChannel;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.ficheros.Adapter.ContactoAdapter;
-import com.example.ficheros.pojo.Contacto;
+public class AgendaActivity extends AppCompatActivity implements View.OnClickListener{
 
-import java.lang.reflect.Array;
-import java.net.CookieHandler;
-import java.util.ArrayList;
+    private EditText edtNumero;
+    private EditText edtNombre;
+    private EditText edtCorreo;
+    private TextView listado;
+    private Button btnAnadir;
+    private Button btnListar;
 
-public class AgendaActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnAnadir;
-    Button btnListar;
-    RecyclerView lista;
-    Resultado listado;
-    Memoria miMemoria;
-    private ContactoAdapter adapter;
-     ArrayList<Contacto> contactos = new ArrayList<Contacto>();
-    public final static String NOMBREFICHERO = "agenda.txt";
+    Resultado resul;
+    private Memoria miMemoria;
+
+    private String contacto;
+
+    private static final String RUTA = "agenda.txt";
+
+    private static final String CODIFICACION = "UTF-8";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
-        lista=findViewById(R.id.lstVAgenda);
-        lista.setHasFixedSize(true);
-        lista.setLayoutManager(new GridLayoutManager(this,1));
-        adapter= new ContactoAdapter(contactos) ;
-        lista.setAdapter(adapter);
 
-        miMemoria = new Memoria(getApplicationContext());
-        btnAnadir=(Button)findViewById(R.id.btnAnadir);
-        btnListar=(Button)findViewById(R.id.btnListar);
+        inicializar();
+
+        miMemoria = new Memoria(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+    if(view == btnListar)
+    {
+        Listar();
+    }
+    if(view == btnAnadir)
+    {
+        Guardar();
+    }
+    }
+
+
+    void inicializar() {
+        edtNombre = (EditText) findViewById(R.id.edtNombre);
+        edtNumero = (EditText) findViewById(R.id.edtTelefono);
+        edtCorreo = (EditText) findViewById(R.id.edtEmail);
+        listado = (TextView) findViewById(R.id.listado);
+        btnListar = (Button) findViewById(R.id.btnListar);
+        btnAnadir = (Button) findViewById(R.id.btnAnadir);
         btnAnadir.setOnClickListener(this);
         btnListar.setOnClickListener(this);
 
     }
-    void Listar()
-        {
-            String listaContactos;
-            String nombre;
-            String email;
-            String telefono;
-            ArrayList<String> valores = new ArrayList<String>();
-
-            if(miMemoria.disponibleLectura())
-            {
-                listado = miMemoria.leerExterna(NOMBREFICHERO,"UTF-8");
-                listaContactos= listado.getMensaje();
-                for(int i = 0; i<listaContactos.length();i++)
-                {
-
-                }
-                valores.add();
-
-            for(int i = 0; i<valores.size();i++)
-            {
-               adapter.getContactos().add(new Contacto(nombre ,telefono,email));
-               lista.setAdapter(adapter);
-            }
-
-}}
-
-    @Override
-    public void onClick(View view) {
-        if(view==btnAnadir)
-        {
-           startActivity( new Intent(AgendaActivity.this,AnadirActivity.class));
+    private void Guardar()
+    {
+        if (edtNombre.getText().length() == 0 || edtNumero.getText().length() == 0 || edtCorreo.getText().length() == 0) {
+            Toast.makeText(this, "Rellene los campos incompletos", Toast.LENGTH_SHORT).show();
         }
-        if(view==btnListar)
+        else {
+            contacto = edtNombre.getText().toString() + "; " + edtCorreo.getText().toString() + "; " + edtNumero.getText().toString() + "\n";
+            miMemoria.escribirInterna(RUTA, contacto, true, CODIFICACION);
+            Toast.makeText(this, "Guardando contacto", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void Listar() {
+        resul = miMemoria.leerInterna(RUTA, CODIFICACION);
+        if (resul.getCodigo()) {
+            listado.setText(resul.getContenido());
+            Toast.makeText(this, "Se han listado los contactos", Toast.LENGTH_SHORT).show();
+        }
+        else
         {
-            Listar();
+            listado.setText("");
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
     }
 
-}
 
+}

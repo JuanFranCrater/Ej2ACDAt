@@ -1,9 +1,9 @@
 package com.example.ficheros;
 
 import android.content.Context;
-import android.content.res.AssetManager;
+
 import android.os.Environment;
-import android.util.Log;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,12 +11,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+
 
 public class Memoria {
     private Context contexto;
@@ -49,7 +47,7 @@ public class Memoria {
             out = new BufferedWriter(osw);
             out.write(cadena);
         } catch (IOException e) {
-            Log.e("Error de E/S", e.getMessage());
+
         } finally {
             try {
                 if (out != null) {
@@ -57,12 +55,12 @@ public class Memoria {
                     correcto = true;
                 }
             } catch (IOException e) {
-                   Log.e("Error al cerrar", e.getMessage());
+
             }
         }
         return correcto;
     }
-
+/*
     public String mostrarPropiedadesInterna(String fichero) {
         File miFichero;
         miFichero = new File(contexto.getFilesDir(), fichero);
@@ -87,6 +85,7 @@ public class Memoria {
         }
         return txt.toString();
     }
+
     public boolean disponibleEscritura() {
         boolean escritura = false;
         String estado = Environment.getExternalStorageState();
@@ -109,7 +108,14 @@ public class Memoria {
         miFichero = new File(tarjeta.getAbsolutePath(), fichero);
         return mostrarPropiedades(miFichero);
     }
+    */
 
+    public Resultado leerExterna(String fichero, String codigo) {
+        File miFichero, tarjeta;
+        tarjeta = Environment.getExternalStorageDirectory();
+        miFichero = new File(tarjeta.getAbsolutePath(), fichero);
+        return leer(miFichero, codigo);
+    }
 
     public Resultado leerInterna(String fichero, String codigo) {
         File miFichero;
@@ -134,7 +140,6 @@ public class Memoria {
                 miCadena.append((char) n);
             }
         } catch (IOException e) {
-            Log.e("Error", e.getMessage());
             resultado.setCodigo(false);
             resultado.setMensaje(e.getMessage());
         } finally {
@@ -145,7 +150,6 @@ public class Memoria {
                     resultado.setMensaje(miCadena.toString());
                 }
             } catch (IOException e) {
-                Log.e("Error al cerrar", e.getMessage());
                 resultado.setCodigo(false);
                 resultado.setMensaje(e.getMessage());
             }
@@ -153,10 +157,5 @@ public class Memoria {
         return resultado;
     }
 
-    public Resultado leerExterna(String fichero, String codigo) {
-        File miFichero, tarjeta;
-        tarjeta = Environment.getExternalStorageDirectory();
-        miFichero = new File(tarjeta.getAbsolutePath(), fichero);
-        return leer(miFichero, codigo);
-    }
+
 }
