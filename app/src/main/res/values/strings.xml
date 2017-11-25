@@ -5,4 +5,6 @@
     <string name="email">Email</string>
     <string name="Anadir">Añadir</string>
     <string name="listar">Listar</string>
+    <string name="txtM"><![CDATA[<->]]></string>
+    <string name="left"><![CDATA[<--]]></string>
 </resources>

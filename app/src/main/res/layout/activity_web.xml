@@ -14,7 +14,7 @@
         android:text="TextView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edtURL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,21 +34,21 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/rdbJava"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Java.net" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rdbAAHC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="AAHC" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/rdbVolley"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -57,7 +57,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnConectar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="1dp"
@@ -67,6 +67,7 @@
     </LinearLayout>
 
     <WebView
+        android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

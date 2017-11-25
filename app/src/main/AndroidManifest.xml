@@ -3,6 +3,8 @@
     package="com.example.ficheros">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +26,8 @@
         <activity android:name=".ImagenesActivity" />
         <activity android:name=".ConversorActivity" />
         <activity android:name=".UploadsActivity" />
-        <activity android:name=".AgendaActivity"></activity>
+        <activity android:name=".AgendaActivity" />
+        <activity android:name=".ContadorActivity"></activity>
     </application>
 
 </manifest>
