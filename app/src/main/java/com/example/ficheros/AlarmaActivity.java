@@ -59,6 +59,8 @@ public class AlarmaActivity extends AppCompatActivity implements View.OnClickLis
         edtMen5 = (EditText) findViewById(R.id.edtMenAl5);
         btnIniciar = (Button)findViewById(R.id.btnInicio);
         btnIniciar.setOnClickListener(this);
+        miMemoria= new Memoria(getApplicationContext());
+        miMemoria.escribirExterna(RUTA, "", false, CODIFICACION);
     }
 
     @Override
@@ -83,58 +85,59 @@ public class AlarmaActivity extends AppCompatActivity implements View.OnClickLis
         }
         else {
             if(edtMin1.getText().length()>0&&edtMin1.getText().length()<3) {
-                alarma1 = edtMin1.getText().toString() + "; " + edtMen1.getText().toString() + "\n";
+                alarma1 = edtMin1.getText().toString() + ", paso por el primer kilómetro " + edtMen1.getText().toString() + "\n";
                 miMemoria.escribirExterna(RUTA, alarma1, true, CODIFICACION);
+
                 bnd.putInt("Alarma1",Integer.valueOf(edtMin1.getText().toString()));
                 if (edtMen1.getText().length()>0)
                 {
-                    bnd.putString("Alarma1",edtMen1.getText().toString());
+                    bnd.putString("Alarma1Men",edtMen1.getText().toString());
                 }else{
-                    bnd.putString("Alarma1","Mensaje alarma 1");
+                    bnd.putString("Alarma1Men","Mensaje alarma 1");
                 }
             }
             if(edtMin2.getText().length()>0&&edtMin2.getText().length()<3) {
-            alarma2 = edtMin2.getText().toString() + "; " + edtMen2.getText().toString()  + "\n";
+            alarma2 = edtMin2.getText().toString() +", paso por el segundo kilómetro "+ edtMen2.getText().toString()  + "\n";
             miMemoria.escribirExterna(RUTA, alarma2, true, CODIFICACION);
                 bnd.putInt("Alarma2",Integer.valueOf(edtMin2.getText().toString()));
                 if (edtMen2.getText().length()>0)
                 {
-                    bnd.putString("Alarma2",edtMen2.getText().toString());
+                    bnd.putString("Alarma2Men",edtMen2.getText().toString());
                 }else{
-                    bnd.putString("Alarma2","Mensaje alarma 2");
+                    bnd.putString("Alarma2Men","Mensaje alarma 2");
                 }
             }
             if(edtMin3.getText().length()>0&&edtMin3.getText().length()<3) {
-            alarma3 = edtMin3.getText().toString() + "; " + edtMen3.getText().toString()  + "\n";
+            alarma3 = edtMin3.getText().toString() + ", paso por el tercer kilómetro " + edtMen3.getText().toString()  + "\n";
             miMemoria.escribirExterna(RUTA, alarma3, true, CODIFICACION);
                 bnd.putInt("Alarma3",Integer.valueOf(edtMin3.getText().toString()));
                 if (edtMen3.getText().length()>0)
                 {
-                    bnd.putString("Alarma3",edtMen3.getText().toString());
+                    bnd.putString("Alarma3Men",edtMen3.getText().toString());
                 }else{
-                    bnd.putString("Alarma3","Mensaje alarma 3");
+                    bnd.putString("Alarma3Men","Mensaje alarma 3");
                 }
             }
             if(edtMin4.getText().length()>0&&edtMin4.getText().length()<3) {
-            alarma4 = edtMin4.getText().toString() + "; " + edtMen4.getText().toString()  + "\n";
+            alarma4 = edtMin4.getText().toString() + ", paso por el cuarto kilómetro " + edtMen4.getText().toString()  + "\n";
             miMemoria.escribirExterna(RUTA, alarma4, true, CODIFICACION);
                 bnd.putInt("Alarma4",Integer.valueOf(edtMin4.getText().toString()));
                 if (edtMen4.getText().length()>0)
                 {
-                    bnd.putString("Alarma4",edtMen4.getText().toString());
+                    bnd.putString("Alarma4Men",edtMen4.getText().toString());
                 }else{
-                    bnd.putString("Alarma4","Mensaje alarma 4");
+                    bnd.putString("Alarma4Men","Mensaje alarma 4");
                 }
             }
             if(edtMin5.getText().length()>0&&edtMin5.getText().length()<3) {
-            alarma5 = edtMin5.getText().toString() + "; " + edtMen5.getText().toString()  + "\n";
+            alarma5 = edtMin5.getText().toString() + ", paso por el quinto kilómetro " + edtMen5.getText().toString()  + "\n";
             miMemoria.escribirExterna(RUTA, alarma5, true, CODIFICACION);
                 bnd.putInt("Alarma5",Integer.valueOf(edtMin5.getText().toString()));
                 if (edtMen5.getText().length()>0)
                 {
-                    bnd.putString("Alarma5",edtMen5.getText().toString());
+                    bnd.putString("Alarma5Men",edtMen5.getText().toString());
                 }else{
-                    bnd.putString("Alarma5","Mensaje alarma 1");
+                    bnd.putString("Alarma5Men","Mensaje alarma 1");
                 }
             }
                 Toast.makeText(this, "Alarmas Guardadas", Toast.LENGTH_SHORT).show();

@@ -8,164 +8,71 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dia 1"
-            android:textAlignment="textStart"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:text="Dia 2"
-            android:textAlignment="textEnd"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center" android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnMasDia1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/txvDia1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:text="01"
-                android:textSize="36sp" />
-
-            <Button
-                android:id="@+id/btnMenDia1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnMasMes1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/txvMes1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:text="01"
-                android:textSize="36sp" />
-
-            <Button
-                android:id="@+id/btnMenMes1"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="@string/txtM"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnMenDia2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-            <TextView
-                android:id="@+id/txvDia2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:text="01"
-                android:textSize="36sp" />
-
-            <Button
-                android:id="@+id/btnMasDia2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnMasMes2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/txvMes2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0"
-                android:text="01"
-                android:textSize="36sp" />
-
-            <Button
-                android:id="@+id/btnMenMes2"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="-" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnCalcular"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
+        android:labelFor="@+id/edtFechaInicio"
+        android:text="Fecha Inicio" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtFechaInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnFechaInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elige fecha de Inicio" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:labelFor="@+id/edtFechaFin"
+        android:text="Fecha Final" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtFechaFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date" />
+
+        <Button
+            android:id="@+id/btnFechaFinal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Elegir Fecha de Fin" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCalcularDias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Calcular" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dias Lectivos" />
+
+    <TextView
+        android:id="@+id/txtDiasLectivos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

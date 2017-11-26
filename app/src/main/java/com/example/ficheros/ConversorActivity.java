@@ -1,6 +1,7 @@
 package com.example.ficheros;
 
 import android.app.ProgressDialog;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -47,7 +48,7 @@ public class ConversorActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
 
-        //cambio=
+        leerCambio();
         rboton=(RadioButton) findViewById(R.id.rbEaD);
         if (rboton.isChecked())
         {
@@ -84,5 +85,34 @@ public class ConversorActivity extends AppCompatActivity implements View.OnClick
                 Double.parseDouble(cantidad) * Double.parseDouble(cambio);
         return
                 Double.toString(valor);
+    }
+
+    public void leerCambio(){
+        File miFichero = new File (Environment.getExternalStorageDirectory().getAbsolutePath());
+        RestClient.get(url, new FileAsyncHttpResponseHandler(miFichero) {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
+                Toast.makeText(getApplicationContext(), "Fallo: " + statusCode + "\n" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, File file) {
+                String cadena=null;
+                FileInputStream fis = null;
+                try {
+                    fis = new FileInputStream(file);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+                    while ((cadena = in.readLine()) != null) {
+                        cambio=cadena;
+                    }
+                    in.close();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
     }
 }
