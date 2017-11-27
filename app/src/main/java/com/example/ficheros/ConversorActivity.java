@@ -111,8 +111,6 @@ public class ConversorActivity extends AppCompatActivity implements View.OnClick
                     e.printStackTrace();
                 }
             }
-
         });
-
     }
 }

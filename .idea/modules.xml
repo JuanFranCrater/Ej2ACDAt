@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\PcCom\Desktop\Ficheros\ACDAT2.iml" filepath="C:\Users\PcCom\Desktop\Ficheros\ACDAT2.iml" />
       <module fileurl="file://$PROJECT_DIR$/Ficheros.iml" filepath="$PROJECT_DIR$/Ficheros.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
